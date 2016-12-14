@@ -15,7 +15,7 @@ func (c *ListCommand) Run(args []string) int {
 }
 
 func (c *ListCommand) Synopsis() string {
-	return ""
+	return "List mapping of <login_name> and <github_username>"
 }
 
 func (c *ListCommand) Help() string {

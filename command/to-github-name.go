@@ -15,7 +15,7 @@ func (c *ToGithubNameCommand) Run(args []string) int {
 }
 
 func (c *ToGithubNameCommand) Synopsis() string {
-	return ""
+	return "Get <github_username> from <login_name>"
 }
 
 func (c *ToGithubNameCommand) Help() string {

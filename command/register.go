@@ -15,7 +15,7 @@ func (c *RegisterCommand) Run(args []string) int {
 }
 
 func (c *RegisterCommand) Synopsis() string {
-	return ""
+	return "Register LoginName and GitHubUsername mapping"
 }
 
 func (c *RegisterCommand) Help() string {
