@@ -55,4 +55,6 @@ func (d *DynamoDB) AddUser(user *models.User) (error) {
 	if err != nil {
 		return err
 	}
+
+	return nil
 }
