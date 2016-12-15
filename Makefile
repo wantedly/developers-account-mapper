@@ -18,3 +18,13 @@ clean:
 .PHONY: install
 install:
 	go install $(LDFLAGS)
+
+.PHONY: deps
+deps: glide
+	glide install
+
+.PHONY: glide
+glide:
+ifeq ($(shell command -v glide 2> /dev/null),)
+	curl https://glide.sh/get | sh
+endif
