@@ -9,12 +9,6 @@ LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(R
 bin/$(NAME): deps
 	go build $(LDFLAGS) -o bin/$(NAME)
 
-.PHONY: clean
-clean:
-	rm -rf bin/*
-	rm -rf dist/*
-	rm -rf vendor/*
-
 .PHONY: install
 install: deps
 	go install $(LDFLAGS)
@@ -28,3 +22,9 @@ glide:
 ifeq ($(shell command -v glide 2> /dev/null),)
 	curl https://glide.sh/get | sh
 endif
+
+.PHONY: clean
+clean:
+	rm -rf bin/*
+	rm -rf dist/*
+	rm -rf vendor/*
