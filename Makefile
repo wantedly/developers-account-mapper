@@ -2,11 +2,13 @@ NAME := github-username-converter
 VERSION := 0.1.0
 REVISION := $(shell git rev-parse --short HEAD)
 
+SRCS    := $(shell find . -type f -name '*.go')
+
 LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
 
 .DEFAULT_GOAL := bin/$(NAME)
 
-bin/$(NAME): deps
+bin/$(NAME): $(SRCS)
 	go build $(LDFLAGS) -o bin/$(NAME)
 
 .PHONY: install
