@@ -1,0 +1,3 @@
+package: github.com/wantedly/slack-mention-converter
+import:
+- package: github.com/mitchellh/cli
