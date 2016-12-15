@@ -1,3 +1,8 @@
 package: github.com/wantedly/github-username-converter
 import:
 - package: github.com/mitchellh/cli
+- package: github.com/aws/aws-sdk-go
+  subpackages:
+  - aws
+  - aws/session
+  - aws/service/dynamodb
