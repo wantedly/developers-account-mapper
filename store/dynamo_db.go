@@ -40,3 +40,19 @@ func (d *DynamoDB) ListUsers() ([]*models.User, error) {
 	return users, nil
 }
 
+func (d *DynamoDB) AddUser(user *models.User) (error) {
+	_, err := d.db.PutItem(&dynamodb.PutItemInput{
+		TableName: aws.String(githubUsersTable),
+		Item: map[string]*dynamodb.AttributeValue{
+			"LoginName": {
+				S: aws.String(user.LoginName),
+			},
+			"GitHubUsername": {
+				S: aws.String(user.GitHubUsername),
+			},
+		},
+	})
+	if err != nil {
+		return err
+	}
+}
