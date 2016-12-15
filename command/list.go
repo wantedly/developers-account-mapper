@@ -2,6 +2,9 @@ package command
 
 import (
 	"strings"
+	"github.com/wantedly/github-username-converter/store"
+	"log"
+	"fmt"
 )
 
 type ListCommand struct {
@@ -9,7 +12,16 @@ type ListCommand struct {
 }
 
 func (c *ListCommand) Run(args []string) int {
-	// Write your code here
+	s := store.NewDynamoDB()
+	users, err := s.ListUsers()
+
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
+	for _, user := range users {
+		fmt.Println(user)
+	}
 
 	return 0
 }
