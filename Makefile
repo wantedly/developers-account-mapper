@@ -6,7 +6,7 @@ LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(R
 
 .DEFAULT_GOAL := bin/$(NAME)
 
-bin/$(NAME):
+bin/$(NAME): deps
 	go build $(LDFLAGS) -o bin/$(NAME)
 
 .PHONY: clean
@@ -16,7 +16,7 @@ clean:
 	rm -rf vendor/*
 
 .PHONY: install
-install:
+install: deps
 	go install $(LDFLAGS)
 
 .PHONY: deps
