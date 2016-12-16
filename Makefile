@@ -1,4 +1,4 @@
-NAME := github-username-converter
+NAME := developers-account-mapper
 VERSION := 0.1.0
 REVISION := $(shell git rev-parse --short HEAD)
 

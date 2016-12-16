@@ -1,6 +1,6 @@
 package main
 
-const Name string = "github-username-converter"
+const Name string = "developers-account-mapper"
 const Version string = "0.1.0"
 
 // GitCommit describes latest commit hash.
