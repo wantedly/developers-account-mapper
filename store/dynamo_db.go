@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	accountMapTable = "GitHubUsers"
+	accountMapTable = "DevelopersAccountMap"
 )
 
 type DynamoDB struct {
