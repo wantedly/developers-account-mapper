@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/mitchellh/cli"
-	"github.com/wantedly/github-username-converter/command"
+	"github.com/wantedly/developers-account-mapper/command"
 )
 
 func Commands(meta *command.Meta) map[string]cli.CommandFactory {

@@ -1,4 +1,4 @@
-package: github.com/wantedly/github-username-converter
+package: github.com/wantedly/developers-account-mapper
 import:
 - package: github.com/mitchellh/cli
 - package: github.com/aws/aws-sdk-go
