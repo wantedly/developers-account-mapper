@@ -1,4 +1,4 @@
-# github-username-converter
+# developers-account-mapper
 
 
 
@@ -11,12 +11,12 @@
 To install, use `go get`:
 
 ```bash
-$ go get -d github.com/wantedly/github-username-converter
+$ go get -d github.com/wantedly/developers-account-mapper
 ```
 
 ## Contribution
 
-1. Fork ([https://github.com/wantedly/github-username-converter/fork](https://github.com/wantedly/github-username-converter/fork))
+1. Fork ([https://github.com/wantedly/developers-account-mapper/fork](https://github.com/wantedly/developers-account-mapper/fork))
 1. Create a feature branch
 1. Commit your changes
 1. Rebase your local changes against the master branch
