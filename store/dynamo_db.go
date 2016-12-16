@@ -34,7 +34,7 @@ func (d *DynamoDB) ListUsers() ([]*models.User, error) {
 	var users []*models.User
 
 	for _, item := range resp.Items {
-		users = append(users, models.NewUser(*item["LoginName"].S, *item["GitHubUSername"].S))
+		users = append(users, models.NewUser(*item["LoginName"].S, *item["GitHubUsername"].S))
 	}
 
 	return users, nil
