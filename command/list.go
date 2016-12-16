@@ -2,7 +2,7 @@ package command
 
 import (
 	"strings"
-	"github.com/wantedly/github-username-converter/store"
+	"github.com/wantedly/developers-account-mapper/store"
 	"log"
 	"fmt"
 )

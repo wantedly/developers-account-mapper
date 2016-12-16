@@ -5,8 +5,8 @@ import (
 	"os"
 	"log"
 	"fmt"
-	"github.com/wantedly/github-username-converter/store"
-	"github.com/wantedly/github-username-converter/models"
+	"github.com/wantedly/developers-account-mapper/store"
+	"github.com/wantedly/developers-account-mapper/models"
 )
 
 type RegisterCommand struct {

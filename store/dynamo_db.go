@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/wantedly/github-username-converter/models"
+	"github.com/wantedly/developers-account-mapper/models"
 )
 
 const (
