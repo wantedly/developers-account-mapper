@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	githubUsersTable = "GitHubUsers"
+	accountMapTable = "GitHubUsers"
 )
 
 type DynamoDB struct {
@@ -25,7 +25,7 @@ func NewDynamoDB() *DynamoDB {
 
 func (d *DynamoDB) ListUsers() ([]*models.User, error) {
 	resp, err := d.db.Scan(&dynamodb.ScanInput{
-		TableName: aws.String(githubUsersTable),
+		TableName: aws.String(accountMapTable),
 	})
 	if err != nil {
 		return nil, err
@@ -42,7 +42,7 @@ func (d *DynamoDB) ListUsers() ([]*models.User, error) {
 
 func (d *DynamoDB) AddUser(user *models.User) (error) {
 	_, err := d.db.PutItem(&dynamodb.PutItemInput{
-		TableName: aws.String(githubUsersTable),
+		TableName: aws.String(accountMapTable),
 		Item: map[string]*dynamodb.AttributeValue{
 			"LoginName": {
 				S: aws.String(user.LoginName),
