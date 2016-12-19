@@ -29,8 +29,7 @@ func (c *RegisterCommand) Run(args []string) int {
 	s := store.NewDynamoDB()
 
 	user := models.NewUser(loginName, githubUsername)
-	err := s.AddUser(user)
-	if err != nil {
+	if err := s.AddUser(user); err != nil {
 		log.Println(err)
 		return 1
 	}
