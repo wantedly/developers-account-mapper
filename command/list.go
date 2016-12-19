@@ -2,9 +2,10 @@ package command
 
 import (
 	"strings"
-	"github.com/wantedly/developers-account-mapper/store"
 	"log"
 	"fmt"
+
+	"github.com/wantedly/developers-account-mapper/store"
 )
 
 type ListCommand struct {
