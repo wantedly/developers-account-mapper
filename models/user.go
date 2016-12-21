@@ -8,13 +8,15 @@ import (
 type User struct {
 	LoginName string
 	GitHubUsername string
+	SlackUsername string
 }
 
 // NewUser creates new User instance
-func NewUser(loginName string, githubUsername string) *User {
+func NewUser(loginName string, githubUsername string, slackUsername string) *User {
 	return &User{
 		LoginName: loginName,
 		GitHubUsername: githubUsername,
+		SlackUsername: slackUsername,
 	}
 }
 
