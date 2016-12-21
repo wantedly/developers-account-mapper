@@ -6,7 +6,7 @@ import (
 	"github.com/wantedly/developers-account-mapper/services"
 )
 
-// User stores login user name and GitHub username
+// User stores login user name and accounts information
 type User struct {
 	LoginName      string
 	GitHubUsername string
