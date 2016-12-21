@@ -6,14 +6,16 @@ import (
 	"net/http"
 	"encoding/json"
 	"github.com/jmoiron/jsonq"
+	"strconv"
 )
 
 const (
 	slackUserListURL = "https://slack.com/api/users.list"
 )
 
-func SlackUserList() ([]interface{}){
-	if token := os.Getenv("SLACK_API_TOKEN"); token == "" {
+func SlackUserList() (map[string]string, error){
+	token := os.Getenv("SLACK_API_TOKEN")
+	if token == "" {
 		return nil, fmt.Errorf("You need to pass SLACK_API_TOKEN as environment variable")
 	}
 	requestURL := slackUserListURL + "?token=" + token
@@ -28,5 +30,12 @@ func SlackUserList() ([]interface{}){
 	dec.Decode(&data)
 	jq := jsonq.NewQuery(data)
 	arr, err := jq.Array("members")
-	return arr, err
+
+	users := make(map[string]string)
+	for i := 0; i < len(arr); i++ {
+		id, _ := jq.String("members", strconv.Itoa(i), "id")
+		name, _ := jq.String("members", strconv.Itoa(i), "name")
+		users[name] = id
+	}
+	return users, err
 }
