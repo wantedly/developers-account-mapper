@@ -20,7 +20,7 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 		LoginName: loginName,
 		GitHubUsername: githubUsername,
 		SlackUsername: slackUsername,
-		SlackUserId: "",
+		SlackUserId: slackUserId,
 	}
 }
 
