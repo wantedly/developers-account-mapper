@@ -50,6 +50,12 @@ func (d *DynamoDB) AddUser(user *models.User) (error) {
 			"GitHubUsername": {
 				S: aws.String(user.GitHubUsername),
 			},
+			"SlackUsername": {
+				S: aws.String(user.SlackUsername),
+			},
+			"SlackUserId": {
+				S: aws.String(user.SlackUserId),
+			},
 		},
 	})
 	if err != nil {
