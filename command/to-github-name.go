@@ -1,7 +1,12 @@
 package command
 
 import (
+	"fmt"
+	"log"
+	"os"
 	"strings"
+
+	"github.com/wantedly/developers-account-mapper/store"
 )
 
 type ToGithubNameCommand struct {
@@ -9,7 +14,24 @@ type ToGithubNameCommand struct {
 }
 
 func (c *ToGithubNameCommand) Run(args []string) int {
-	// Write your code here
+	var loginName string
+	if len(args) == 0 {
+		loginName = os.Getenv("USER")
+	} else if len(args) == 1 {
+		loginName = args[0]
+	} else {
+		log.Println(c.Help())
+		return 1
+	}
+
+	s := store.NewDynamoDB()
+
+	user, err := s.GetUserByLoginName(loginName)
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
+	fmt.Printf("GitHub account for %s is: %s\n", loginName, user.GitHubUsername)
 
 	return 0
 }
