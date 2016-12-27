@@ -34,10 +34,13 @@ func SlackUserList() (map[string]string, error){
 
 	users := make(map[string]string)
 	for i := 0; i < len(arr); i++ {
-		id, idErr := jq.String("members", strconv.Itoa(i), "id")
-		name, nameErr := jq.String("members", strconv.Itoa(i), "name")
-		if idErr != nil && nameErr != nil {
-			return nil, idErr || nameErr
+		id, err := jq.String("members", strconv.Itoa(i), "id")
+		if err != nil {
+			return nil, err
+		}
+		name, err := jq.String("members", strconv.Itoa(i), "name")
+		if err != nil {
+			return nil, err
 		}
 		users[name] = id
 	}
