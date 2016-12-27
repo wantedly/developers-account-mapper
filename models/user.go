@@ -29,13 +29,13 @@ func (u *User) SetSlackUserId(newId string) *User {
 	return u
 }
 
-func (u *User) RetrieveSlackUserId() (*User, error) {
+func (u *User) RetrieveSlackUserId() error {
 	nameIdMap, err := services.SlackUserList()
 	if err != nil {
-		return nil, err
+		return err
 	}
 	u.SetSlackUserId(nameIdMap[u.SlackUsername])
-	return u, nil
+	return nil
 }
 
 func (u *User) String() string {
