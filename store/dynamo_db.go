@@ -1,6 +1,8 @@
 package store
 
 import (
+	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -40,7 +42,7 @@ func (d *DynamoDB) ListUsers() ([]*models.User, error) {
 	return users, nil
 }
 
-func (d *DynamoDB) AddUser(user *models.User) (error) {
+func (d *DynamoDB) AddUser(user *models.User) error {
 	_, err := d.db.PutItem(&dynamodb.PutItemInput{
 		TableName: aws.String(accountMapTable),
 		Item: map[string]*dynamodb.AttributeValue{
@@ -57,4 +59,39 @@ func (d *DynamoDB) AddUser(user *models.User) (error) {
 	}
 
 	return nil
+}
+
+func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
+	params := &dynamodb.GetItemInput{
+		TableName: aws.String(accountMapTable),
+		Key: map[string]*dynamodb.AttributeValue{
+			"LoginName": {
+				S: aws.String(loginName),
+			},
+		},
+		AttributesToGet: []*string{
+			aws.String("GitHubUsername"),
+		},
+		ConsistentRead: aws.Bool(true),
+	}
+
+	resp, err := d.db.GetItem(params)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var gitHubUsername string
+	if len(resp.Item) == 1 {
+		gitHubUsername = *resp.Item["GitHubUsername"].S
+	} else {
+		return nil, fmt.Errorf("%s is not registered yet", loginName)
+	}
+
+	user := &models.User{
+		LoginName:      loginName,
+		GitHubUsername: gitHubUsername,
+	}
+
+	return user, nil
 }
