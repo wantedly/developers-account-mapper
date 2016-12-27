@@ -32,7 +32,7 @@ func (c *RegisterCommand) Run(args []string) int {
 	s := store.NewDynamoDB()
 
 	user := models.NewUser(loginName, githubUsername, slackUsername, "")
-	user, err := user.RetrieveSlackUserId()
+	err := user.RetrieveSlackUserId()
 	if err != nil {
 		log.Println(err)
 		return 1
