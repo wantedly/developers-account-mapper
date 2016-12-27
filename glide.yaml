@@ -6,3 +6,4 @@ import:
   - aws
   - aws/session
   - aws/service/dynamodb
+- package: github.com/jmoiron/jsonq
