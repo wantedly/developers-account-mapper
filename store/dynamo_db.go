@@ -36,7 +36,7 @@ func (d *DynamoDB) ListUsers() ([]*models.User, error) {
 	var users []*models.User
 
 	for _, item := range resp.Items {
-		users = append(users, models.NewUser(*item["LoginName"].S, *item["GitHubUsername"].S, *item["SlackUsername"].S, *item["SlackUserId"].S))
+		users = append(users, models.NewUser(*item["LoginName"].S, *item["GitHubUsername"].S))
 	}
 
 	return users, nil
@@ -52,15 +52,13 @@ func (d *DynamoDB) AddUser(user *models.User) error {
 			"GitHubUsername": {
 				S: aws.String(user.GitHubUsername),
 			},
-			"SlackUsername": {
-				S: aws.String(user.SlackUsername),
-			},
-			"SlackUserId": {
-				S: aws.String(user.SlackUserId),
-			},
 		},
 	})
-	return err
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
