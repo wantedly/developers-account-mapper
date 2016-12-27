@@ -5,6 +5,7 @@ import (
 	"os"
 	"log"
 	"fmt"
+
 	"github.com/wantedly/developers-account-mapper/store"
 	"github.com/wantedly/developers-account-mapper/models"
 )
@@ -14,13 +15,15 @@ type RegisterCommand struct {
 }
 
 func (c *RegisterCommand) Run(args []string) int {
-	var loginName, githubUsername string
-	if len(args) == 1 {
+	var loginName, githubUsername, slackUsername string
+	if len(args) == 2 {
 		loginName = os.Getenv("USER")
 		githubUsername = args[0]
-	} else if len(args) == 2 {
+		slackUsername  = args[1]
+	} else if len(args) == 3 {
 		loginName = args[0]
 		githubUsername = args[1]
+		slackUsername = args[2]
 	} else {
 		log.Println(c.Help())
 		return 1
@@ -28,7 +31,12 @@ func (c *RegisterCommand) Run(args []string) int {
 
 	s := store.NewDynamoDB()
 
-	user := models.NewUser(loginName, githubUsername)
+	user := models.NewUser(loginName, githubUsername, slackUsername, "")
+	err := user.RetrieveSlackUserId()
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
 	if err := s.AddUser(user); err != nil {
 		log.Println(err)
 		return 1
@@ -39,7 +47,7 @@ func (c *RegisterCommand) Run(args []string) int {
 }
 
 func (c *RegisterCommand) Synopsis() string {
-	return "Register LoginName and GitHubUsername mapping"
+	return "Register LoginName and other accounts mapping"
 }
 
 func (c *RegisterCommand) Help() string {
