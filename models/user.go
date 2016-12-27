@@ -37,7 +37,7 @@ func (u *User) String() (string, error) {
 	if u.SlackUserId == "" {
 		err := u.RetrieveSlackUserId()
 		if err != nil {
-			return nil, err
+			return "", err
 		}
 	}
 	return fmt.Sprintf("%v:@%v:<@%v:%v>", u.LoginName, u.GitHubUsername, u.SlackUsername, u.SlackUserId), nil
