@@ -24,17 +24,12 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 	}
 }
 
-func (u *User) SetSlackUserId(newId string) *User {
-	u.SlackUserId = newId
-	return u
-}
-
 func (u *User) RetrieveSlackUserId() error {
 	nameIdMap, err := services.SlackUserList()
 	if err != nil {
 		return err
 	}
-	u.SetSlackUserId(nameIdMap[u.SlackUsername])
+	u.SlackUserId = nameIdMap[u.SlackUsername]
 	return nil
 }
 
