@@ -35,7 +35,10 @@ func (u *User) RetrieveSlackUserId() error {
 
 func (u *User) String() string {
 	if u.SlackUserId == "" {
-		u.RetrieveSlackUserId()
+		err := u.RetrieveSlackUserId()
+		if err != nil {
+			return fmt.Sprintf("%v", err)
+		}
 	}
 	return fmt.Sprintf("%v:@%v:<@%v:%v>", u.LoginName, u.GitHubUsername, u.SlackUsername, u.SlackUserId)
 }
