@@ -16,10 +16,6 @@ type ExecCommand struct {
 
 func (c *ExecCommand) Run(args []string) int {
 	loginName := args[0]
-	if args[1] != "exec" {
-		log.Println("$ developers-account-mapper setenv <user> exec")
-		return 1
-	}
 
 	s := store.NewDynamoDB()
 
@@ -32,7 +28,7 @@ func (c *ExecCommand) Run(args []string) int {
 	envs := os.Environ()
 	envs = append(envs, fmt.Sprintf("%s=%s", "GITHUB_USERNAME", user.GitHubUsername))
 
-	execCmd := exec.Command(args[2], args[3:]...)
+	execCmd := exec.Command(args[1], args[2:]...)
 	execCmd.Env = envs
 	execCmd.Stderr = os.Stderr
 	execCmd.Stdout = os.Stdout
