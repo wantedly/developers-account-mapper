@@ -10,4 +10,4 @@ before_install:
 install:
   - glide install
 script:
-  - make
+  - make test
