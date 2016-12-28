@@ -17,10 +17,10 @@ type User struct {
 // NewUser creates new User instance
 func NewUser(loginName string, githubUsername string, slackUsername string, slackUserId string) *User {
 	return &User{
-		LoginName: loginName,
+		LoginName:      loginName,
 		GitHubUsername: githubUsername,
-		SlackUsername: slackUsername,
-		SlackUserId: slackUserId,
+		SlackUsername:  slackUsername,
+		SlackUserId:    slackUserId,
 	}
 }
 

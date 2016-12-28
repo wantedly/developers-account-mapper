@@ -5,11 +5,11 @@ import (
 )
 
 func SetUser() *User {
-	return &User {
-		LoginName: "loginName",
+	return &User{
+		LoginName:      "loginName",
 		GitHubUsername: "github_user",
-		SlackUsername: "slack_user",
-		SlackUserId: "SLACKID",
+		SlackUsername:  "slack_user",
+		SlackUserId:    "SLACKID",
 	}
 }
 
