@@ -20,6 +20,10 @@ func (c *SetenvCommand) Run(args []string) int {
 	s := store.NewDynamoDB()
 
 	user, err := s.GetUserByLoginName(loginName)
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
 	os.Setenv("GITHUB_USERNAME", user.GitHubUsername)
 
 	return 0
