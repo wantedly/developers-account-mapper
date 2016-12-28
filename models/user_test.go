@@ -23,3 +23,17 @@ func TestSlackMention(t *testing.T) {
 		t.Fatalf("%v does not much to expected: %v", actual, expect)
 	}
 }
+
+func TestEnvs(t *testing.T) {
+	user := SetUser()
+
+	expect := []string{
+		"GITHUB_USERNAME=github_user",
+		"SLACK_MENTION=<@SLACKID|slack_user>",
+	}
+	actual := user.Envs()
+
+	if actual != expect {
+		t.Fatalf("%v does not much to expected: %v", actual, expect)
+	}
+}
