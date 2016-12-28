@@ -2,7 +2,8 @@ NAME := developers-account-mapper
 VERSION := 0.1.0
 REVISION := $(shell git rev-parse --short HEAD)
 
-SRCS    := $(shell find . -type f -name '*.go')
+SRCS           := $(shell find . -type f -name '*.go')
+SRCS_NO_VENDOR := $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
 LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
 
@@ -24,6 +25,10 @@ glide:
 ifeq ($(shell command -v glide 2> /dev/null),)
 	curl https://glide.sh/get | sh
 endif
+
+.PHONY: gofmt
+gofmt: $(SRCS_NO_VENDOR)
+	gofmt -s -l -w $(SRCS_NO_VENDOR)
 
 .PHONY: clean
 clean:
