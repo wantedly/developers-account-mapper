@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"syscall"
+	"strings"
 
 	"github.com/wantedly/developers-account-mapper/store"
 )
@@ -45,4 +46,15 @@ func (c *SetenvCommand) Run(args []string) int {
 	os.Exit(execCmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus())
 
 	return 0
+}
+
+func (c *SetenvCommand) Synopsis() string {
+	return "Set account information as env vars and exec commands"
+}
+
+func (c *SetenvCommand) Help() string {
+	helpText := `
+
+`
+	return strings.TrimSpace(helpText)
 }
