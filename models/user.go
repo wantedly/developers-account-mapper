@@ -24,6 +24,10 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 	}
 }
 
+func (u *User) Envs() []string {
+	return []string{}
+}
+
 func (u *User) SlackMention() string {
 	return fmt.Sprintf("<@%v|%v>", u.SlackUserId, u.SlackUsername)
 }
