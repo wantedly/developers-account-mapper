@@ -93,7 +93,6 @@ func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 			SlackUserId: *resp.Item["SlackUserId"].S,
 			SlackUsername: *resp.Item["SlackUsername"].S,
 		}
-		 *resp.Item["GitHubUsername"].S
 	} else {
 		return nil, fmt.Errorf("%s is not registered yet", loginName)
 	}
