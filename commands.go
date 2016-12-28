@@ -18,7 +18,7 @@ func Commands(meta *command.Meta) map[string]cli.CommandFactory {
 			}, nil
 		},
 		"setenv": func() (cli.Command, error) {
-			return &command.SetenvCommand{
+			return &command.ExecCommand{
 				Meta: *meta,
 			}, nil
 		},

@@ -10,11 +10,11 @@ import (
 	"github.com/wantedly/developers-account-mapper/store"
 )
 
-type SetenvCommand struct {
+type ExecCommand struct {
 	Meta
 }
 
-func (c *SetenvCommand) Run(args []string) int {
+func (c *ExecCommand) Run(args []string) int {
 	loginName := args[0]
 	if args[1] != "exec" {
 		log.Println("$ developers-account-mapper setenv <user> exec")
@@ -45,11 +45,11 @@ func (c *SetenvCommand) Run(args []string) int {
 	return 0
 }
 
-func (c *SetenvCommand) Synopsis() string {
+func (c *ExecCommand) Synopsis() string {
 	return "Set account information as env vars and exec commands"
 }
 
-func (c *SetenvCommand) Help() string {
+func (c *ExecCommand) Help() string {
 	helpText := `
 
 `
