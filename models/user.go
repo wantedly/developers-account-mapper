@@ -24,6 +24,10 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 	}
 }
 
+func (u *User) SlackMention() string {
+	return fmt.Sprintf("<@%v|%v>", u.SlackUserId, u.SlackUsername)
+}
+
 func (u *User) RetrieveSlackUserId() error {
 	nameIdMap, err := services.SlackUserList()
 	if err != nil {
