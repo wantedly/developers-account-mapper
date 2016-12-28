@@ -1,5 +1,6 @@
 # developers-account-mapper
 
+[![Build Status](https://travis-ci.org/wantedly/developers-account-mapper.svg)](https://travis-ci.org/wantedly/developers-account-mapper)
 
 
 ## Description

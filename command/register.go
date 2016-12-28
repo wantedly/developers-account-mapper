@@ -41,7 +41,13 @@ func (c *RegisterCommand) Run(args []string) int {
 		log.Println(err)
 		return 1
 	}
-	fmt.Printf("user %q added.\n", user)
+
+	userSummary, err := user.String()
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
+	fmt.Printf("user %q added.\n", userSummary)
 
 	return 0
 }
