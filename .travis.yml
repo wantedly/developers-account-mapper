@@ -2,9 +2,12 @@ sudo: required
 language: go
 go:
   - '1.7'
+before_install:
+  - sudo add-apt-repository ppa:masterminds/glide -y
+  - sudo apt-get update -q
+  - sudo apt-get install glide -y
+  - mkdir -p $GOPATH/bin
 install:
-  - go get -v github.com/Masterminds/glide
-  - cd $GOPATH/src/github.com/Masterminds/glide && git checkout b5e17dc5b955dfa19539f84a53a30b9f61f2000a && go install && cd -
   - glide install
 script:
   - make test
