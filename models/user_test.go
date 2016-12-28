@@ -36,4 +36,10 @@ func TestEnvs(t *testing.T) {
 	if len(actual) != len(expect) {
 		t.Fatalf("%v does not much to expected: %v", len(actual), len(expect))
 	}
+
+	for i := range expect {
+		if expect[i] != actual[i] {
+			t.Fatalf("%v does not much to expected: %v", actual, expect)
+		}
+	}
 }
