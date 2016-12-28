@@ -26,6 +26,10 @@ ifeq ($(shell command -v glide 2> /dev/null),)
 	curl https://glide.sh/get | sh
 endif
 
+.PHONY: test
+test:
+	go test -v `glide novendor`
+
 .PHONY: gofmt
 gofmt: $(SRCS_NO_VENDOR)
 	gofmt -s -w $(SRCS_NO_VENDOR)
