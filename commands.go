@@ -17,6 +17,11 @@ func Commands(meta *command.Meta) map[string]cli.CommandFactory {
 				Meta: *meta,
 			}, nil
 		},
+		"setenv": func() (cli.Command, error) {
+			return &command.SetenvCommand{
+				Meta: *meta,
+			}, nil
+		},
 		"to-github-name": func() (cli.Command, error) {
 			return &command.ToGithubNameCommand{
 				Meta: *meta,
