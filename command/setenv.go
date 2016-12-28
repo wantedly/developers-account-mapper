@@ -1,9 +1,13 @@
 package command
 
 import (
+	"fmt"
 	"log"
-	"github.com/wantedly/developers-account-mapper/store"
 	"os"
+	"os/exec"
+	"syscall"
+
+	"github.com/wantedly/developers-account-mapper/store"
 )
 
 type SetenvCommand struct {
@@ -24,7 +28,21 @@ func (c *SetenvCommand) Run(args []string) int {
 		log.Println(err)
 		return 1
 	}
-	os.Setenv("GITHUB_USERNAME", user.GitHubUsername)
+
+	envs := os.Environ()
+	envs = append(envs, fmt.Sprintf("%s=%s", "GITHUB_USERNAME", user.GitHubUsername))
+
+	execCmd := exec.Command(args[1], args[2:]...)
+	execCmd.Env = envs
+	execCmd.Stderr = os.Stderr
+	execCmd.Stdout = os.Stdout
+	err = execCmd.Run()
+
+	if execCmd.Process == nil {
+		log.Println(err)
+	}
+
+	os.Exit(execCmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus())
 
 	return 0
 }
