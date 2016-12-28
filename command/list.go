@@ -1,9 +1,9 @@
 package command
 
 import (
-	"strings"
-	"log"
 	"fmt"
+	"log"
+	"strings"
 
 	"github.com/wantedly/developers-account-mapper/store"
 )

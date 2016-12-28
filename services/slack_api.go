@@ -1,10 +1,10 @@
 package services
 
 import (
-	"os"
+	"encoding/json"
 	"fmt"
 	"net/http"
-	"encoding/json"
+	"os"
 	"strconv"
 
 	"github.com/jmoiron/jsonq"
@@ -14,7 +14,7 @@ const (
 	slackUserListURL = "https://slack.com/api/users.list"
 )
 
-func SlackUserList() (map[string]string, error){
+func SlackUserList() (map[string]string, error) {
 	token := os.Getenv("SLACK_API_TOKEN")
 	if token == "" {
 		return nil, fmt.Errorf("You need to pass SLACK_API_TOKEN as environment variable")

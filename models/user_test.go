@@ -5,11 +5,11 @@ import (
 )
 
 func TestSlackMention(t *testing.T) {
-	user := &User {
-		LoginName: "loginName",
+	user := &User{
+		LoginName:      "loginName",
 		GitHubUsername: "github_user",
-		SlackUsername: "slack_user",
-		SlackUserId: "SLACKID",
+		SlackUsername:  "slack_user",
+		SlackUserId:    "SLACKID",
 	}
 
 	expect := "<@SLACKID|slack_user>"
