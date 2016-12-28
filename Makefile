@@ -28,7 +28,7 @@ endif
 
 .PHONY: gofmt
 gofmt: $(SRCS_NO_VENDOR)
-	gofmt -s -l -w $(SRCS_NO_VENDOR)
+	gofmt -s -w $(SRCS_NO_VENDOR)
 
 .PHONY: clean
 clean:
