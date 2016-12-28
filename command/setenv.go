@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"syscall"
 	"strings"
 
 	"github.com/wantedly/developers-account-mapper/store"
@@ -33,17 +32,11 @@ func (c *SetenvCommand) Run(args []string) int {
 	envs := os.Environ()
 	envs = append(envs, fmt.Sprintf("%s=%s", "GITHUB_USERNAME", user.GitHubUsername))
 
-	execCmd := exec.Command(args[1], args[2:]...)
+	execCmd := exec.Command(args[2], args[3:]...)
 	execCmd.Env = envs
 	execCmd.Stderr = os.Stderr
 	execCmd.Stdout = os.Stdout
 	err = execCmd.Run()
-
-	if execCmd.Process == nil {
-		log.Println(err)
-	}
-
-	os.Exit(execCmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus())
 
 	return 0
 }
