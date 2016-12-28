@@ -89,9 +89,9 @@ func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 	if len(resp.Item) == 1 {
 		user = &models.User {
 			LoginName:      loginName,
-			GitHubUsername: resp.Item[0]["GitHubUsername"],
-			SlackUserId: resp.Item[0]["SlackUserId"],
-			SlackUsername: resp.Item[0]["SlackUsername"],
+			GitHubUsername: *resp.Item["GitHubUsername"].S,
+			SlackUserId: *resp.Item["SlackUserId"].S,
+			SlackUsername: *resp.Item["SlackUsername"].S,
 		}
 		 *resp.Item["GitHubUsername"].S
 	} else {
