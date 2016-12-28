@@ -37,6 +37,10 @@ func (c *SetenvCommand) Run(args []string) int {
 	execCmd.Stderr = os.Stderr
 	execCmd.Stdout = os.Stdout
 	err = execCmd.Run()
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
 
 	return 0
 }
