@@ -25,6 +25,7 @@ ifeq ($(shell command -v glide 2> /dev/null),)
 	curl https://glide.sh/get | sh
 endif
 
+.PHONY: test
 test:
 	go test -v `glide novendor`
 
