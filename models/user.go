@@ -17,11 +17,22 @@ type User struct {
 // NewUser creates new User instance
 func NewUser(loginName string, githubUsername string, slackUsername string, slackUserId string) *User {
 	return &User{
-		LoginName: loginName,
+		LoginName:      loginName,
 		GitHubUsername: githubUsername,
-		SlackUsername: slackUsername,
-		SlackUserId: slackUserId,
+		SlackUsername:  slackUsername,
+		SlackUserId:    slackUserId,
 	}
+}
+
+func (u *User) Envs() []string {
+	return []string{
+		fmt.Sprintf("GITHUB_USERNAME=%s", u.GitHubUsername),
+		fmt.Sprintf("SLACK_MENTION=%s", u.SlackMention()),
+	}
+}
+
+func (u *User) SlackMention() string {
+	return fmt.Sprintf("<@%v|%v>", u.SlackUserId, u.SlackUsername)
 }
 
 func (u *User) RetrieveSlackUserId() error {

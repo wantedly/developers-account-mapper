@@ -73,6 +73,8 @@ func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 		},
 		AttributesToGet: []*string{
 			aws.String("GitHubUsername"),
+			aws.String("SlackUsername"),
+			aws.String("SlackUserId"),
 		},
 		ConsistentRead: aws.Bool(true),
 	}
@@ -83,16 +85,15 @@ func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 		return nil, err
 	}
 
-	var gitHubUsername string
-	if len(resp.Item) == 1 {
-		gitHubUsername = *resp.Item["GitHubUsername"].S
-	} else {
+	if len(resp.Item) != 1 {
 		return nil, fmt.Errorf("%s is not registered yet", loginName)
 	}
 
 	user := &models.User{
 		LoginName:      loginName,
-		GitHubUsername: gitHubUsername,
+		GitHubUsername: *resp.Item["GitHubUsername"].S,
+		SlackUserId:    *resp.Item["SlackUserId"].S,
+		SlackUsername:  *resp.Item["SlackUsername"].S,
 	}
 
 	return user, nil
