@@ -16,6 +16,16 @@ type ExecCommand struct {
 }
 
 func (c *ExecCommand) Run(args []string) int {
+	if len(args) < 1 {
+		fmt.Println("Add your login name")
+		return 1
+	}
+
+	if len(args) < 2 {
+		fmt.Println("Add your command after login name")
+		return 1
+	}
+
 	loginName := args[0]
 
 	s := store.NewDynamoDB()
