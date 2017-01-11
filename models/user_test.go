@@ -1,6 +1,7 @@
 package models
 
 import (
+
 	"reflect"
 	"testing"
 )
@@ -12,6 +13,7 @@ func SetUser() *User {
 		SlackUsername:  "slack_user",
 		SlackUserId:    "SLACKID",
 	}
+
 }
 
 func TestSlackMention(t *testing.T) {
@@ -21,6 +23,7 @@ func TestSlackMention(t *testing.T) {
 	actual := user.SlackMention()
 
 	if actual != expect {
+
 		t.Fatalf("%v does not match to expected: %v", actual, expect)
 	}
 }
