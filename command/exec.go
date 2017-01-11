@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"syscall"
 
 	"github.com/wantedly/developers-account-mapper/store"
 )
@@ -33,10 +34,13 @@ func (c *ExecCommand) Run(args []string) int {
 	execCmd.Stderr = os.Stderr
 	execCmd.Stdout = os.Stdout
 	err = execCmd.Run()
-	if err != nil {
+
+	if execCmd.Process == nil {
 		log.Println(err)
 		return 1
 	}
+
+	os.Exit(execCmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus())
 
 	return 0
 }
