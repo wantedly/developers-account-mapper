@@ -36,11 +36,11 @@ gofmt: $(SRCS_NO_VENDOR)
 
 .PHONY: cross-build
 cross-build:
-    for os in darwin linux windows; do \
-        for arch in amd64 386; do \
-            GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$$os-$$arch/$(NAME); \
-        done; \
-    done
+	for os in darwin linux windows; do \
+		for arch in amd64 386; do \
+			GOOS=$$os GOARCH=$$arch go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o dist/$$os-$$arch/$(NAME); \
+		done; \
+	done
 
 .PHONY: clean
 clean:
