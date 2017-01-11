@@ -17,6 +17,11 @@ func Commands(meta *command.Meta) map[string]cli.CommandFactory {
 				Meta: *meta,
 			}, nil
 		},
+		"exec": func() (cli.Command, error) {
+			return &command.ExecCommand{
+				Meta: *meta,
+			}, nil
+		},
 		"to-github-name": func() (cli.Command, error) {
 			return &command.ToGithubNameCommand{
 				Meta: *meta,
