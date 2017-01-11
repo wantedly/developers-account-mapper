@@ -85,16 +85,16 @@ func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 		return nil, err
 	}
 
-	var user *models.User
-	if len(resp.Item) == 1 {
-		user = &models.User{
-			LoginName:      loginName,
-			GitHubUsername: *resp.Item["GitHubUsername"].S,
-			SlackUserId:    *resp.Item["SlackUserId"].S,
-			SlackUsername:  *resp.Item["SlackUsername"].S,
-		}
-	} else {
+
+	if len(resp.Item) != 1 {
 		return nil, fmt.Errorf("%s is not registered yet", loginName)
+	}
+
+	user := &models.User{
+		LoginName:      loginName,
+		GitHubUsername: *resp.Item["GitHubUsername"].S,
+		SlackUserId:    *resp.Item["SlackUserId"].S,
+		SlackUsername:  *resp.Item["SlackUsername"].S,
 	}
 
 	return user, nil
