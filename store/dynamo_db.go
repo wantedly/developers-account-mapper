@@ -85,7 +85,7 @@ func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 		return nil, err
 	}
 
-	if len(resp.Item) != 1 {
+	if len(resp.Item) == 0 {
 		return nil, fmt.Errorf("%s is not registered yet", loginName)
 	}
 
