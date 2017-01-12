@@ -1,3 +1,4 @@
 developers-account-mapper
 *.test
 /vendor
+/dist
