@@ -1,15 +1,15 @@
-NAME := developers-account-mapper
-VERSION := v0.1.0
-REVISION := $(shell git rev-parse --short HEAD)
+NAME           := developers-account-mapper
+VERSION        := v0.1.0
+REVISION       := $(shell git rev-parse --short HEAD)
 
 SRCS           := $(shell find . -type f -name '*.go')
 SRCS_NO_VENDOR := $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
-LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
+LDFLAGS        := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
 
-DIST_DIRS := find * -type d -exec
+DIST_DIRS      := find * -type d -exec
 
-.DEFAULT_GOAL := bin/$(NAME)
+.DEFAULT_GOAL  := bin/$(NAME)
 
 bin/$(NAME): $(SRCS)
 	go build $(LDFLAGS) -o bin/$(NAME)
