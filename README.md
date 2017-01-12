@@ -1,6 +1,7 @@
 # developers-account-mapper
 
 [![Build Status](https://travis-ci.org/wantedly/developers-account-mapper.svg)](https://travis-ci.org/wantedly/developers-account-mapper)
+[![GitHub release](https://img.shields.io/github/release/wantedly/developers-account-mapper.svg)](https://github.com/wantedly/developers-account-mapper/releases)
 
 
 ## Description
