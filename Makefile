@@ -7,6 +7,8 @@ SRCS_NO_VENDOR := $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
 LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
 
+DIST_DIRS := find * -type d -exec
+
 .DEFAULT_GOAL := bin/$(NAME)
 
 bin/$(NAME): $(SRCS)
