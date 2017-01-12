@@ -53,6 +53,12 @@ cross-build:
 		done; \
 	done
 
+.PHONY: release
+release:
+	git checkout master
+	git tag $(VERSION)
+	git push origin $(VERSION)
+
 .PHONY: clean
 clean:
 	rm -rf bin/*
