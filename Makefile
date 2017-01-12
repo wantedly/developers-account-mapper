@@ -34,6 +34,15 @@ test:
 gofmt: $(SRCS_NO_VENDOR)
 	gofmt -s -w $(SRCS_NO_VENDOR)
 
+.PHONY: dist
+dist:
+	cd dist && \
+	$(DIST_DIRS) cp ../LICENSE {} \; && \
+	$(DIST_DIRS) cp ../README.md {} \; && \
+	$(DIST_DIRS) tar -zcf $(NAME)-$(VERSION)-{}.tar.gz {} \; && \
+	$(DIST_DIRS) zip -r $(NAME)-$(VERSION)-{}.zip {} \; && \
+	cd ..
+
 .PHONY: cross-build
 cross-build:
 	for os in darwin linux windows; do \
