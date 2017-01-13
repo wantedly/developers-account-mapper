@@ -20,7 +20,7 @@ func (c *RegisterCommand) Run(args []string) int {
 		githubUsername = args[1]
 		slackUsername = args[2]
 	} else {
-		log.Println(c.Help())
+		fmt.Println(c.Help())
 		return 1
 	}
 
