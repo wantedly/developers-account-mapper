@@ -63,6 +63,10 @@ func (d *DynamoDB) AddUser(user *models.User) error {
 	return err
 }
 
+func (d *DynamoDB) DeleteUser(user *models.User) error {
+	return nil
+}
+
 func (d *DynamoDB) GetUserByLoginName(loginName string) (*models.User, error) {
 	params := &dynamodb.GetItemInput{
 		TableName: aws.String(accountMapTable),

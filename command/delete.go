@@ -2,6 +2,8 @@ package command
 
 import (
 	"strings"
+
+	"github.com/wantedly/developers-account-mapper/store"
 )
 
 type DeleteCommand struct {
@@ -9,6 +11,11 @@ type DeleteCommand struct {
 }
 
 func (c *DeleteCommand) Run(args []string) int {
+	loginName := args[0]
+
+	s := store.NewDynamoDB()
+	s.DeleteUser(loginName)
+
 	return 0
 }
 
