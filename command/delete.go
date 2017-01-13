@@ -1,6 +1,7 @@
 package command
 
 import (
+	"log"
 	"strings"
 
 	"github.com/wantedly/developers-account-mapper/store"
@@ -14,7 +15,12 @@ func (c *DeleteCommand) Run(args []string) int {
 	loginName := args[0]
 
 	s := store.NewDynamoDB()
-	s.DeleteUser(loginName)
+	err := s.DeleteUser(loginName)
+
+	if err != nil {
+		log.Println(err)
+		return 1
+	}
 
 	return 0
 }
