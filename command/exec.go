@@ -37,7 +37,7 @@ func (c *ExecCommand) Run(args []string) int {
 	}
 
 	envs := os.Environ()
-	envs = append(envs, fmt.Sprintf("%s=%s", "GITHUB_USERNAME", user.GitHubUsername))
+	envs = append(envs, user.Envs()...)
 
 	execCmd := exec.Command(args[1], args[2:]...)
 	execCmd.Env = envs
