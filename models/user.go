@@ -51,5 +51,5 @@ func (u *User) String() (string, error) {
 			return "", err
 		}
 	}
-	return fmt.Sprintf("%v:@%v:<@%v:%v>", u.LoginName, u.GitHubUsername, u.SlackUsername, u.SlackUserId), nil
+	return fmt.Sprintf("%v:@%v:%v", u.LoginName, u.GitHubUsername, u.SlackMention()), nil
 }

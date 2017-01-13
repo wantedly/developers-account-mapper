@@ -20,8 +20,14 @@ func (c *ListCommand) Run(args []string) int {
 		log.Println(err)
 		return 1
 	}
+
 	for _, user := range users {
-		fmt.Println(user)
+		userSummary, err := user.String()
+		if err != nil {
+			log.Println(err)
+			return 1
+		}
+		fmt.Println(userSummary)
 	}
 
 	return 0
