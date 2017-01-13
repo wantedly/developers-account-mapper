@@ -3,7 +3,6 @@ package command
 import (
 	"fmt"
 	"log"
-	"os"
 	"strings"
 
 	"github.com/wantedly/developers-account-mapper/models"
@@ -16,16 +15,12 @@ type RegisterCommand struct {
 
 func (c *RegisterCommand) Run(args []string) int {
 	var loginName, githubUsername, slackUsername string
-	if len(args) == 2 {
-		loginName = os.Getenv("USER")
-		githubUsername = args[0]
-		slackUsername = args[1]
-	} else if len(args) == 3 {
+	if len(args) == 3 {
 		loginName = args[0]
 		githubUsername = args[1]
 		slackUsername = args[2]
 	} else {
-		log.Println(c.Help())
+		fmt.Println(c.Help())
 		return 1
 	}
 
@@ -58,7 +53,7 @@ func (c *RegisterCommand) Synopsis() string {
 
 func (c *RegisterCommand) Help() string {
 	helpText := `
-
+usage: developers-account-mapper register <iam_username> <github_username> <slack username>
 `
 	return strings.TrimSpace(helpText)
 }
