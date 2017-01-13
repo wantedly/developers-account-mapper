@@ -53,7 +53,10 @@ func (c *RegisterCommand) Synopsis() string {
 
 func (c *RegisterCommand) Help() string {
 	helpText := `
-
+	This command accepts exactly 3 argments in following order
+	+ Login username: IAM username
+	+ GitHub username
+	+ Slack username
 `
 	return strings.TrimSpace(helpText)
 }
