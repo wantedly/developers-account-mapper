@@ -1,7 +1,7 @@
 package main
 
-const Name string = "developers-account-mapper"
-const Version string = "0.1.0"
+var Name string = "developers-account-mapper"
+var Version string = "0.1.0"
 
 // GitCommit describes latest commit hash.
 // This value is extracted by git command when building.
