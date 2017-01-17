@@ -24,6 +24,12 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 	}
 }
 
+const Headers = []string{
+	"AWS IAM",
+	"GITHUB",
+	"SLACK",
+}
+
 func (u *User) Envs() []string {
 	return []string{
 		fmt.Sprintf("GITHUB_USERNAME=%s", u.GitHubUsername),
