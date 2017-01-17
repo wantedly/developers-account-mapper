@@ -31,6 +31,7 @@ func TestEnvs(t *testing.T) {
 	expect := []string{
 		"GITHUB_USERNAME=github_user",
 		"SLACK_MENTION=<@SLACKID|slack_user>",
+		"SLACK_USER=slack_user",
 	}
 	actual := user.Envs()
 
