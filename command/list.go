@@ -1,10 +1,10 @@
 package command
 
 import (
-	"fmt"
 	"log"
 	"strings"
 
+	"github.com/wantedly/developers-account-mapper/models"
 	"github.com/wantedly/developers-account-mapper/store"
 )
 
@@ -21,14 +21,7 @@ func (c *ListCommand) Run(args []string) int {
 		return 1
 	}
 
-	for _, user := range users {
-		userSummary, err := user.String()
-		if err != nil {
-			log.Println(err)
-			return 1
-		}
-		fmt.Println(userSummary)
-	}
+	models.PrintUsers(users)
 
 	return 0
 }

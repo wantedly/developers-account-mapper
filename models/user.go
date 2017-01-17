@@ -2,6 +2,9 @@ package models
 
 import (
 	"fmt"
+	"os"
+	"strings"
+	"text/tabwriter"
 
 	"github.com/wantedly/developers-account-mapper/services"
 )
@@ -24,10 +27,27 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 	}
 }
 
-const Headers = []string{
+var UserHeaders = []string{
 	"AWS IAM",
 	"GITHUB",
 	"SLACK",
+}
+
+func PrintUsers(users []*User) {
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 4, ' ', 0)
+	fmt.Fprintln(w, strings.Join(UserHeaders, "\t"))
+	for _, user := range users {
+		fmt.Fprintln(w, strings.Join(user.Attributes(), "\t"))
+	}
+	w.Flush()
+}
+
+func (u *User) Attributes() []string {
+	return []string{
+		u.LoginName,
+		u.GitHubUsername,
+		u.SlackMention(),
+	}
 }
 
 func (u *User) Envs() []string {
