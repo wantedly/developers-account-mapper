@@ -28,7 +28,7 @@ func NewUser(loginName string, githubUsername string, slackUsername string, slac
 }
 
 var UserHeaders = []string{
-	"AWS IAM",
+	"AWS-IAM",
 	"GITHUB",
 	"SLACK",
 }
