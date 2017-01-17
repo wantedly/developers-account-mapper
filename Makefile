@@ -5,7 +5,7 @@ REVISION       := $(shell git rev-parse --short HEAD)
 SRCS           := $(shell find . -type f -name '*.go')
 SRCS_NO_VENDOR := $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
-LDFLAGS        := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
+LDFLAGS        := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.GitCommit=$(REVISION)\""
 
 DIST_DIRS      := find * -type d -exec
 
