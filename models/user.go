@@ -28,6 +28,7 @@ func (u *User) Envs() []string {
 	return []string{
 		fmt.Sprintf("GITHUB_USERNAME=%s", u.GitHubUsername),
 		fmt.Sprintf("SLACK_MENTION=%s", u.SlackMention()),
+		fmt.Sprintf("SLACK_USER=%s", u.SlackUsername),
 	}
 }
 
