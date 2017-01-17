@@ -31,10 +31,11 @@ var UserHeaders = []string{
 	"AWS-IAM",
 	"GITHUB",
 	"SLACK",
+	"SLACK_MENTION",
 }
 
 func PrintUsers(users []*User) {
-	w := tabwriter.NewWriter(os.Stdout, 0, 0, 4, ' ', 0)
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
 	fmt.Fprintln(w, strings.Join(UserHeaders, "\t"))
 	for _, user := range users {
 		fmt.Fprintln(w, strings.Join(user.Attributes(), "\t"))
@@ -46,6 +47,7 @@ func (u *User) Attributes() []string {
 	return []string{
 		u.LoginName,
 		u.GitHubUsername,
+		u.SlackUsername,
 		u.SlackMention(),
 	}
 }
