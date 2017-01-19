@@ -43,6 +43,7 @@ func (c *ExecCommand) Run(args []string) int {
 	execCmd.Env = envs
 	execCmd.Stderr = os.Stderr
 	execCmd.Stdout = os.Stdout
+	execCmd.Stdin = os.Stdin
 	err = execCmd.Run()
 
 	if execCmd.Process == nil {
