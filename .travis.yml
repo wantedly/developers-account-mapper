@@ -15,11 +15,17 @@ before_deploy:
   - make cross-build
   - make dist
 deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key: $GITHUB_TOKEN
-  file_glob: true
-  file: 'dist/*.{tar.gz,zip}'
-  on:
-    tags: true
-    go: '1.7'
+  - provider: releases
+    skip_cleanup: true
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file: 'dist/*.{tar.gz,zip}'
+    on:
+      tags: true
+      go: '1.7'
+  - provider: script
+    skip_cleanup: true
+    script: make ci-docker-release
+    on:
+      branch: master
+      go: '1.7'
