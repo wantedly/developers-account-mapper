@@ -64,6 +64,14 @@ release:
 	git tag $(VERSION)
 	git push origin $(VERSION)
 
+.PHONY: docker-build
+docker-build:
+ifeq ($(findstring ELF 64-bit LSB,$(shell file bin/$(NAME) 2> /dev/null)),)
+	@echo "bin/$(NAME) is not a binary of Linux 64bit binary."
+	@exit 1
+endif
+	docker build -t $(DOCKER_IMAGE) .
+
 .PHONY: ci-docker-release
 ci-docker-release: docker-build
 	@docker login -u="$(DOCKER_QUAY_USERNAME)" -p="$(DOCKER_QUAY_PASSWORD)" $(DOCKER_REPOSITORY)
