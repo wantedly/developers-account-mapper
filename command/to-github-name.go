@@ -3,7 +3,6 @@ package command
 import (
 	"fmt"
 	"log"
-	"os"
 	"strings"
 
 	"github.com/wantedly/developers-account-mapper/store"
@@ -15,9 +14,7 @@ type ToGithubNameCommand struct {
 
 func (c *ToGithubNameCommand) Run(args []string) int {
 	var loginName string
-	if len(args) == 0 {
-		loginName = os.Getenv("USER")
-	} else if len(args) == 1 {
+	if len(args) == 1 {
 		loginName = args[0]
 	} else {
 		log.Println(c.Help())
