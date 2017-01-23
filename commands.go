@@ -32,6 +32,11 @@ func Commands(meta *command.Meta) map[string]cli.CommandFactory {
 				Meta: *meta,
 			}, nil
 		},
+		"to-slack-mention": func() (cli.Command, error) {
+			return &command.ToSlackMention{
+				Meta: *meta,
+			}, nil
+		},
 
 		"version": func() (cli.Command, error) {
 			return &command.VersionCommand{
