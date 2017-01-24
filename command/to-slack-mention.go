@@ -28,7 +28,7 @@ func (c *ToSlackMention) Run(args []string) int {
 		log.Println(err)
 		return 1
 	}
-	fmt.Printf("SlackMention account for %s is: %s\n", loginName, user.SlackMention())
+	fmt.Println(user.SlackMention())
 
 	return 0
 }
