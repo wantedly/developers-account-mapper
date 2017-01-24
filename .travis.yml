@@ -30,3 +30,10 @@ deploy:
     on:
       branch: master
       go: '1.7'
+  - provider: script
+    skip_cleanup: true
+    script: DOCKER_IMAGE_TAG=$TRAVIS_TAG make ci-docker-release
+    on:
+      tags: true
+      branch: master
+      go: '1.7'
