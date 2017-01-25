@@ -1,0 +1,3 @@
+account:
+  image: quay.io/wantedly/developers-account-mapper:latest
+  env_file: .env

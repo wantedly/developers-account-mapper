@@ -2,3 +2,4 @@ developers-account-mapper
 *.test
 /vendor
 /dist
+.env
