@@ -9,6 +9,11 @@ LDFLAGS        := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.GitCo
 
 DIST_DIRS      := find * -type d -exec
 
+DOCKER_REPOSITORY := quay.io
+DOCKER_IMAGE_NAME := $(DOCKER_REPOSITORY)/wantedly/developers-account-mapper
+DOCKER_IMAGE_TAG ?= latest
+DOCKER_IMAGE := $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)
+
 .DEFAULT_GOAL  := bin/$(NAME)
 
 bin/$(NAME): $(SRCS)
@@ -58,6 +63,19 @@ release:
 	git checkout master
 	git tag $(VERSION)
 	git push origin $(VERSION)
+
+.PHONY: docker-build
+docker-build:
+ifeq ($(findstring ELF 64-bit LSB,$(shell file bin/$(NAME) 2> /dev/null)),)
+	@echo "bin/$(NAME) is not a binary of Linux 64bit binary."
+	@exit 1
+endif
+	docker build -t $(DOCKER_IMAGE) .
+
+.PHONY: ci-docker-release
+ci-docker-release: docker-build
+	@docker login -u="$(DOCKER_QUAY_USERNAME)" -p="$(DOCKER_QUAY_PASSWORD)" $(DOCKER_REPOSITORY)
+	docker push $(DOCKER_IMAGE)
 
 .PHONY: clean
 clean:
