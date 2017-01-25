@@ -1,3 +1,9 @@
+## [v0.2.2](https://github.com/wantedly/developers-account-mapper/releases/tag/v0.2.2) (2017-01-25)
+
+## Changed
+
+[Simple output for to-* commands](https://github.com/wantedly/developers-account-mapper/pull/33)
+
 ## [v0.2.1](https://github.com/wantedly/developers-account-mapper/releases/tag/v0.2.1) (2017-01-23)
 
 ## Added
