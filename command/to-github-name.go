@@ -28,7 +28,7 @@ func (c *ToGithubNameCommand) Run(args []string) int {
 		log.Println(err)
 		return 1
 	}
-	fmt.Printf("GitHub account for %s is: %s\n", loginName, user.GitHubUsername)
+	fmt.Println(user.GitHubUsername)
 
 	return 0
 }
