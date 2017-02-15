@@ -43,7 +43,7 @@ resource "aws_dynamodb_table" "developers-account-map" {
 }
 ```
 
-In addition, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_REGION` must be set at your shell.
+In addition, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` and `SLACK_API_TOKEN` must be set at your shell.
 This IAM user/role must be allowed to read/write the DynamoDB table above.
 
 ## Install
