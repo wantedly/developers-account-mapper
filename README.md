@@ -5,7 +5,7 @@
 
 ## Summary
 
-Convert login name or account name to Slack mention format.
+Manage developers' accounts list.
 
 ```bash
 $ bin/developers-account-mapper to-slack-mention potsbo
