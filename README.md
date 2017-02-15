@@ -13,6 +13,12 @@ $ developers-account-mapper to-slack-mention potsbo
 ```
 ## Description
 
+Convert a key username, which is recommended to be unique among the developers group, to other username.
+Currently, we support Slack and GitHub.
+
+### Slack
+Especially abount Slack, developers-account-mapper is able to fetch Slack ID by Slack username and output it as a Slack mention format.
+
 ## Usage
 
 One DynamoDB tables named `DevelopersAccountMap` has to be created.
