@@ -29,6 +29,19 @@ One DynamoDB tables named `DevelopersAccountMap` has to be created.
 |---|----|---|
 |LoginName|String|Primary key|
 
+```tf
+resource "aws_dynamodb_table" "developers-account-map" {
+  name           = "DevelopersAccountMap"
+  read_capacity  = 5 # or anything you want
+  write_capacity = 5 # or anything you want
+  hash_key       = "LoginName"
+  attribute {
+    name = "LoginName"
+    type = "S"
+  }
+}
+```
+
 In addition, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_REGION` must be set at your shell.
 This IAM user/role must be allowed to read/write the DynamoDB table above.
 
