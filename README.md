@@ -15,6 +15,17 @@ $ developers-account-mapper to-slack-mention potsbo
 
 ## Usage
 
+One DynamoDB tables named `DevelopersAccountMap` has to be created.
+
+#### `DevelopersAccountMap` table
+
+|Key|Type| |
+|---|----|---|
+|LoginName|String|Primary key|
+
+In addition, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_REGION` must be set at your shell.
+This IAM user/role must be allowed to read/write the DynamoDB table above.
+
 ## Install
 
 To install, use `go get`:
