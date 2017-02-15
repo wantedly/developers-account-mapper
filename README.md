@@ -19,7 +19,7 @@ Currently, we support Slack and GitHub.
 
 ### Slack
 
-Especially abount Slack, developers-account-mapper is able to fetch Slack ID by Slack username and output it as a Slack mention format.
+Especially about Slack, developers-account-mapper is able to fetch Slack ID by Slack username and output it as a Slack mention format.
 
 ## Usage
 
