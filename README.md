@@ -8,7 +8,7 @@
 Manage developers' accounts list.
 
 ```bash
-$ bin/developers-account-mapper to-slack-mention potsbo
+$ developers-account-mapper to-slack-mention potsbo
 <@U2XXXXXXX|shimpei>
 ```
 ## Description
