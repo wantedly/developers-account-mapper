@@ -3,7 +3,14 @@
 [![Build Status](https://travis-ci.org/wantedly/developers-account-mapper.svg)](https://travis-ci.org/wantedly/developers-account-mapper)
 [![GitHub release](https://img.shields.io/github/release/wantedly/developers-account-mapper.svg)](https://github.com/wantedly/developers-account-mapper/releases)
 
+## Summary
 
+Convert login name or account name to Slack mention format.
+
+```bash
+$ bin/developers-account-mapper to-slack-mention potsbo
+<@U2XXXXXXX|shimpei>
+```
 ## Description
 
 ## Usage
