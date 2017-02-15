@@ -67,3 +67,7 @@ $ go get -d github.com/wantedly/developers-account-mapper
 ## Author
 
 [wantedly](https://github.com/wantedly)
+
+## License
+
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
