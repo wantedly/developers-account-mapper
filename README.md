@@ -60,6 +60,20 @@ Available commands are:
     version             Print developers-account-mapper version and quit
 ```
 
+### Use with Docker
+
+#### Run
+
+```
+docker run --rm \
+  -e SLACK_API_TOKEN=<slack token get by https://api.slack.com/docs/oauth-test-tokens>  \
+  -e AWS_ACCESS_KEY_ID=yourawsaccesskeyid \
+  -e AWS_SECRET_ACCESS_KEY=yourawssecretaccesskey \
+  -e AWS_REGION=ap-northeast-1 \
+  quay.io/wantedly/developers-account-mapper \
+  <command>
+```
+
 ## Install
 
 To install, use `go get`:
