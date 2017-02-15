@@ -11,12 +11,14 @@ Manage developers' accounts list.
 $ developers-account-mapper to-slack-mention potsbo
 <@U2XXXXXXX|shimpei>
 ```
+
 ## Description
 
 Convert a key username, which is recommended to be unique among the developers group, to other username.
 Currently, we support Slack and GitHub.
 
 ### Slack
+
 Especially abount Slack, developers-account-mapper is able to fetch Slack ID by Slack username and output it as a Slack mention format.
 
 ## Usage
@@ -30,6 +32,7 @@ One DynamoDB tables named `DevelopersAccountMap` has to be created.
 |LoginName|String|Primary key|
 
 In terraform, you can create the table with below.
+
 ```tf
 resource "aws_dynamodb_table" "developers-account-map" {
   name           = "DevelopersAccountMap"
@@ -47,6 +50,7 @@ In addition, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` and `SLA
 This IAM user/role must be allowed to read/write the DynamoDB table above.
 
 ### Command Usage
+
 ```
 usage: developers-account-mapper [--version] [--help] <command> [<args>]
 
