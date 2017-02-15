@@ -46,6 +46,20 @@ resource "aws_dynamodb_table" "developers-account-map" {
 In addition, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` and `SLACK_API_TOKEN` must be set at your shell.
 This IAM user/role must be allowed to read/write the DynamoDB table above.
 
+### Command Usage
+```
+usage: developers-account-mapper [--version] [--help] <command> [<args>]
+
+Available commands are:
+    delete              Delete record with <login_name>
+    exec                Set account information as env vars and exec commands
+    list                List mapping of <login_name> and mapped accounts
+    register            Register LoginName and other accounts mapping
+    to-github-name      Get <github_username> from <login_name>
+    to-slack-mention    Get <slack_mention> from <login_name>
+    version             Print developers-account-mapper version and quit
+```
+
 ## Install
 
 To install, use `go get`:
