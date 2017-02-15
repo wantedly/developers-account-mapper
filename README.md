@@ -29,6 +29,7 @@ One DynamoDB tables named `DevelopersAccountMap` has to be created.
 |---|----|---|
 |LoginName|String|Primary key|
 
+In terraform, you can create the table with below.
 ```tf
 resource "aws_dynamodb_table" "developers-account-map" {
   name           = "DevelopersAccountMap"
