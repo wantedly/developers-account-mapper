@@ -65,7 +65,12 @@ func (u *User) SlackMention() string {
 }
 
 func (u *User) RetrieveSlackUserId() error {
-	nameIdMap, err := services.SlackUserList()
+	token := os.Getenv("SLACK_API_TOKEN")
+	if token == "" {
+		return fmt.Errorf("You need to pass SLACK_API_TOKEN as environment variable")
+	}
+
+	nameIdMap, err := services.SlackUserList(token)
 	if err != nil {
 		return err
 	}
