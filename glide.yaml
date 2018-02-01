@@ -1,9 +1,0 @@
-package: github.com/wantedly/developers-account-mapper
-import:
-- package: github.com/mitchellh/cli
-- package: github.com/aws/aws-sdk-go
-  subpackages:
-  - aws
-  - aws/session
-  - aws/service/dynamodb
-- package: github.com/jmoiron/jsonq
