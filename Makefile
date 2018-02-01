@@ -4,6 +4,7 @@ REVISION       := $(shell git rev-parse --short HEAD)
 
 SRCS           := $(shell find . -type f -name '*.go')
 SRCS_NO_VENDOR := $(shell find . -type f -name '*.go' -not -path "./vendor/*")
+NOVENDOR       := $(shell go list ./... | grep -v vendor)
 
 LDFLAGS        := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.GitCommit=$(REVISION)\""
 
@@ -23,19 +24,19 @@ bin/$(NAME): $(SRCS)
 install: deps
 	go install $(LDFLAGS)
 
-.PHONY: deps
-deps: glide
-	glide install
-
-.PHONY: glide
-glide:
-ifeq ($(shell command -v glide 2> /dev/null),)
-	curl https://glide.sh/get | sh
+.PHONY: dep
+dep:
+ifeq ($(shell command -v dep 2> /dev/null),)
+	go get -u github.com/golang/dep/cmd/dep
 endif
+
+.PHONY: deps
+deps: dep
+	dep ensure -v
 
 .PHONY: test
 test:
-	go test -v `glide novendor`
+	go test -v $(NOVENDOR)
 
 .PHONY: gofmt
 gofmt: $(SRCS_NO_VENDOR)
