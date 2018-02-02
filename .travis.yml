@@ -4,13 +4,8 @@ services:
 language: go
 go:
   - '1.9.3'
-before_install:
-  - sudo add-apt-repository ppa:masterminds/glide -y
-  - sudo apt-get update -q
-  - sudo apt-get install glide -y
-  - mkdir -p $GOPATH/bin
 install:
-  - glide install
+  - make deps
 script:
   - make test
 before_deploy:
