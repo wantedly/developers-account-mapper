@@ -3,7 +3,7 @@ services:
   - docker
 language: go
 go:
-  - '1.7'
+  - '1.9.3'
 install:
   - make deps
 script:
@@ -20,17 +20,14 @@ deploy:
     file: 'dist/*.{tar.gz,zip}'
     on:
       tags: true
-      go: '1.7'
   - provider: script
     skip_cleanup: true
     script: make ci-docker-release
     on:
       branch: master
-      go: '1.7'
   - provider: script
     skip_cleanup: true
     script: DOCKER_IMAGE_TAG=$TRAVIS_TAG make ci-docker-release
     on:
       tags: true
       branch: master
-      go: '1.7'
