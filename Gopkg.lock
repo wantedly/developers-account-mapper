@@ -75,9 +75,15 @@
   packages = ["unix"]
   revision = "a60af9cbbc6ab800af4f2be864a31f423a0ae1f2"
 
+[[projects]]
+  name = "gopkg.in/h2non/gock.v1"
+  packages = ["."]
+  revision = "26775f23aa9da4cbd47bc2600a57ac07bbf3bd20"
+  version = "v1.0.7"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f88a7f08d3399c75c4613719ecefdd97f29902f6c94e1e05d140d9916d0c3737"
+  inputs-digest = "055bab2a6eb61fe7d341ccbd7a1a40d3fbdeb0952a2b1ec282eaba4614120733"
   solver-name = "gps-cdcl"
   solver-version = 1
